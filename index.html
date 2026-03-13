@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Safety Meeting | Pura Vida Contracting</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #0d3d1f;
+    --green-mid:    #1a5c2a;
+    --green-main:   #2e7d32;
+    --green-light:  #4caf50;
+    --green-pale:   #e8f5e9;
+    --green-ghost:  #f1faf2;
+    --orange:       #e65100;
+    --orange-pale:  #fff3e0;
+    --red:          #c62828;
+    --ink:          #0d1a0f;
+    --muted:        #5a6e5d;
+    --border:       #c8deca;
+    --white:        #ffffff;
+    --bg:           #f7fbf7;
+    --card:         #ffffff;
+    --shadow:       0 2px 16px rgba(13,61,31,0.08);
+    --shadow-lg:    0 8px 40px rgba(13,61,31,0.13);
+    --radius:       12px;
+    --radius-sm:    6px;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+    --font-mono:    'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO HEADER ───────────────────────────────────────── */
+  .hero {
+    background: var(--green-dark);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px),
+      linear-gradient(135deg, #0d3d1f 0%, #1a5c2a 60%, #2e7d32 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a5d6a7;
+    margin-bottom: 12px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: #69f0ae; border-radius: 50%; display: block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 58px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .hero h1 em {
+    display: block;
+    font-style: normal;
+    color: #a5d6a7;
+    font-size: 0.65em;
+    letter-spacing: 0.08em;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #81c784;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .hero-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .logo-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+  .logo-box .lg-name {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    color: white;
+    font-size: 15px;
+    line-height: 1.1;
+  }
+  .logo-box .lg-sub {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #a5d6a7;
+    text-transform: uppercase;
+  }
+
+  /* ── PROGRESS BAR ───────────────────────────────────────── */
+  .progress-bar-wrap {
+    background: var(--green-dark);
+    padding: 0 32px 20px;
+  }
+  .progress-track {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    height: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #69f0ae, #4caf50);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-steps {
+    max-width: 900px;
+    margin: 8px auto 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .progress-step {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.3s;
+  }
+  .progress-step.active { color: #a5d6a7; }
+  .progress-step.done { color: #69f0ae; }
+
+  /* ── MAIN LAYOUT ────────────────────────────────────────── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 32px 80px;
+  }
+
+  /* ── SECTION BLOCKS ─────────────────────────────────────── */
+  .form-section {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+  .form-section:nth-child(1) { animation-delay: 0.05s; }
+  .form-section:nth-child(2) { animation-delay: 0.10s; }
+  .form-section:nth-child(3) { animation-delay: 0.15s; }
+  .form-section:nth-child(4) { animation-delay: 0.20s; }
+  .form-section:nth-child(5) { animation-delay: 0.25s; }
+  .form-section:nth-child(6) { animation-delay: 0.30s; }
+  .form-section:nth-child(7) { animation-delay: 0.35s; }
+
+  .section-header {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-number {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: rgba(255,255,255,0.18);
+    line-height: 1;
+    min-width: 32px;
+  }
+  .section-titles { flex: 1; }
+  .section-title-en {
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    letter-spacing: 0.03em;
+  }
+  .section-title-es {
+    font-size: 12px;
+    color: #a5d6a7;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .section-icon {
+    font-size: 28px;
+    opacity: 0.9;
+  }
+  .section-body {
+    padding: 24px 28px;
+  }
+
+  /* ── ALERT BOXES ─────────────────────────────────────────── */
+  .alert {
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert-content {}
+  .alert-en { font-weight: 600; font-size: 13px; line-height: 1.5; }
+  .alert-es { font-size: 12px; font-style: italic; color: inherit; opacity: 0.8; margin-top: 3px; line-height: 1.5; }
+  .alert-warn { background: var(--orange-pale); border-left: 4px solid var(--orange); color: #6d2d00; }
+  .alert-info { background: var(--green-pale); border-left: 4px solid var(--green-main); color: var(--green-dark); }
+
+  /* ── CHECKLIST ───────────────────────────────────────────── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .checklist-item:hover { border-color: var(--green-light); background: var(--green-ghost); }
+  .checklist-item.checked {
+    border-color: var(--green-main);
+    background: var(--green-pale);
+  }
+  .checklist-item input[type=checkbox] { display: none; }
+  .check-box {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    background: white;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+  }
+  .checklist-item.checked .check-box {
+    background: var(--green-main);
+    border-color: var(--green-main);
+    color: white;
+  }
+  .check-box svg { display: none; }
+  .checklist-item.checked .check-box svg { display: block; }
+  .check-text {}
+  .check-en { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+  .check-es { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 2px; line-height: 1.4; }
+  .checklist-item.checked .check-en { color: var(--green-dark); }
+
+  /* ── FORM FIELDS ─────────────────────────────────────────── */
+  .fields-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  .field-group.full { grid-column: 1 / -1; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .field-label span { color: var(--red); margin-left: 2px; }
+  .field-input {
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--bg);
+    transition: all 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .field-input:focus { border-color: var(--green-main); background: white; box-shadow: 0 0 0 4px rgba(46,125,50,0.08); }
+  .field-input.error { border-color: var(--red); }
+  select.field-input { cursor: pointer; }
+  .field-hint { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  /* ── ATTENDANCE TABLE ────────────────────────────────────── */
+  .attendance-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+  }
+  .attendance-table thead th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--green-mid);
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .attendance-table thead th:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .attendance-table thead th:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .att-row td {
+    padding: 6px 4px;
+    vertical-align: middle;
+  }
+  .att-row td .field-input { margin: 0; font-size: 13px; padding: 8px 10px; }
+  .att-row-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    width: 32px;
+  }
+  .btn-add-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 8px 18px;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    border: 2px dashed var(--green-light);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-add-row:hover { background: var(--green-ghost); border-color: var(--green-main); }
+  .btn-remove {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+  .btn-remove:hover { color: var(--red); background: #fff0f0; }
+
+  /* ── SIGN OFF ─────────────────────────────────────────────── */
+  .signoff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .signoff-field { display: flex; flex-direction: column; gap: 8px; }
+  .signoff-line {
+    border-bottom: 2px solid var(--border);
+    height: 48px;
+    background: var(--bg);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.2s;
+    position: relative;
+    cursor: text;
+  }
+  .signoff-line:focus-within { border-color: var(--green-main); background: white; }
+  .signoff-input-hidden {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 100%;
+    cursor: pointer;
+  }
+  .signoff-name { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .signoff-role { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  /* ── DECLARATION ─────────────────────────────────────────── */
+  .declaration {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    color: white;
+    margin-bottom: 24px;
+  }
+  .declaration h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.06em; margin-bottom: 12px; }
+  .declaration p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+  .declaration p.es { font-style: italic; color: rgba(165,214,167,0.9); }
+  .declaration-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .declaration-check:hover { background: rgba(255,255,255,0.12); }
+  .declaration-check.checked { background: rgba(105,240,174,0.12); border-color: #69f0ae; }
+  .decl-checkbox {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    border: 2px solid rgba(255,255,255,0.4);
+    background: transparent;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+  }
+  .declaration-check.checked .decl-checkbox { background: #69f0ae; border-color: #69f0ae; }
+  .decl-checkbox svg { display: none; }
+  .declaration-check.checked .decl-checkbox svg { display: block; }
+  .decl-text { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.6; }
+  .decl-text span { display: block; font-size: 12px; font-style: italic; color: rgba(165,214,167,0.85); margin-top: 4px; }
+
+  /* ── SUBMIT BUTTON ─────────────────────────────────────────── */
+  .submit-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 48px;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(46,125,50,0.35);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(46,125,50,0.45); }
+  .btn-submit:hover::before { opacity: 1; }
+  .btn-submit span { position: relative; z-index: 1; }
+  .btn-submit .btn-icon { font-size: 22px; position: relative; z-index: 1; }
+  .submit-note {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── SUCCESS SCREEN ─────────────────────────────────────────── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 80px 32px;
+  }
+  .success-icon {
+    width: 80px; height: 80px;
+    background: var(--green-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 24px;
+    border: 3px solid var(--green-main);
+  }
+  .success-screen h2 { font-family: var(--font-display); font-size: 40px; color: var(--green-dark); letter-spacing: 0.05em; margin-bottom: 8px; }
+  .success-screen p { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 440px; margin: 0 auto 8px; }
+  .btn-new { margin-top: 24px; padding: 12px 32px; background: var(--green-pale); color: var(--green-dark); border: 2px solid var(--green-light); border-radius: 999px; font-family: var(--font-body); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-new:hover { background: var(--green-pale); border-color: var(--green-main); }
+  .btn-print { margin-top: 12px; padding: 12px 32px; background: var(--green-mid); color: white; border: none; border-radius: 999px; font-family: var(--font-body); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-print:hover { background: var(--green-dark); }
+
+  /* ── VALIDATION ──────────────────────────────────────────── */
+  .validation-msg {
+    display: none;
+    background: #fff0f0;
+    border: 1px solid #ffcdd2;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--red);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .validation-msg.show { display: block; }
+
+  /* ── DIVIDER ─────────────────────────────────────────────── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-logos { display: none; }
+    .fields-grid { grid-template-columns: 1fr; }
+    .signoff-grid { grid-template-columns: 1fr; }
+    .container { padding: 20px 16px 60px; }
+    .section-body { padding: 18px 16px; }
+    .section-header { padding: 14px 16px; }
+  }
+
+  /* ── PRINT ───────────────────────────────────────────────── */
+  @media print {
+    .btn-submit, .btn-add-row, .btn-remove, .progress-bar-wrap { display: none; }
+    .form-section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span> Safety First / Seguridad Primero</div>
+      <h1>Weekly Safety<br>Meeting<em>Reunion Semanal de Seguridad</em></h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Project / Proyecto</span>
+          <span class="hero-meta-value">Marpole — 1289 W 76th Ave</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Company / Empresa</span>
+          <span class="hero-meta-value">Pura Vida Contracting LTD.</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Subcontractor</span>
+          <span class="hero-meta-value">Syber Concrete Forming</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-logos">
+      <div class="logo-box">
+        <div class="lg-name">PURA VIDA</div>
+        <div class="lg-sub">Contracting LTD.</div>
+      </div>
+      <div class="logo-box">
+        <div class="lg-name">SYBER</div>
+        <div class="lg-sub">Concrete Forming</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-bar-wrap">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-steps">
+    <span class="progress-step active" id="ps1">Meeting Info</span>
+    <span class="progress-step" id="ps2">Safety Topics</span>
+    <span class="progress-step" id="ps3">Attendance</span>
+    <span class="progress-step" id="ps4">Sign Off</span>
+  </div>
+</div>
+
+<div class="container" id="formContainer">
+
+  <!-- ── 0. MEETING DETAILS ─────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">00</div>
+      <div class="section-titles">
+        <div class="section-title-en">Meeting Details</div>
+        <div class="section-title-es">Detalles de la Reunion</div>
+      </div>
+      <div class="section-icon">📋</div>
+    </div>
+    <div class="section-body">
+      <div class="fields-grid">
+        <div class="field-group">
+          <label class="field-label">Date / Fecha <span>*</span></label>
+          <input type="date" class="field-input" id="meetingDate" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Week / Semana <span>*</span></label>
+          <input type="text" class="field-input" id="meetingWeek" placeholder="e.g. 03/02/2026 – 03/07/2026" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Project / Proyecto <span>*</span></label>
+          <input type="text" class="field-input" id="projectName" value="Marpole" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Address / Direccion <span>*</span></label>
+          <input type="text" class="field-input" id="projectAddress" value="1289 West 76th Avenue" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Supervisor <span>*</span></label>
+          <input type="text" class="field-input" id="supervisorName" placeholder="Name / Nombre" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label">CSO / Safety Officer</label>
+          <input type="text" class="field-input" id="csoName" placeholder="Name / Nombre">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Superintendent</label>
+          <input type="text" class="field-input" id="superintendentName" placeholder="Name / Nombre">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Weather / Clima</label>
+          <select class="field-input" id="weather">
+            <option value="">Select / Seleccione</option>
+            <option>Sunny / Soleado</option>
+            <option>Cloudy / Nublado</option>
+            <option>Rainy / Lluvioso</option>
+            <option>Windy / Ventoso</option>
+            <option>Foggy / Neblina</option>
+            <option>Snowy / Nevado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 1. EYE PROTECTION ──────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-titles">
+        <div class="section-title-en">Eye Protection — Full Face Shield & Safety Glasses</div>
+        <div class="section-title-es">Proteccion Ocular — Careta Completa y Lentes de Seguridad</div>
+      </div>
+      <div class="section-icon">🥽</div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div class="alert-content">
+          <div class="alert-en">Your eyes cannot be replaced. A spark or metal fragment can cause permanent blindness in seconds.</div>
+          <div class="alert-es">Sus ojos no se pueden reemplazar. Una chispa o fragmento de metal puede causar ceguera permanente en segundos.</div>
+        </div>
+      </div>
+      <ul class="checklist" id="chk1">
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Safety glasses MUST be worn at ALL times on site, not only when using tools.</div><div class="check-es">Los lentes de seguridad DEBEN usarse TODO el tiempo en el sitio, no solo al usar herramientas.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">When cutting with a saw or using a hammer — flying particles are common and dangerous.</div><div class="check-es">Al cortar con sierra o usar martillo, es comun que salgan particulas peligrosas.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">When using a grinder to cut metal — a Full Face Shield is MANDATORY in addition to safety glasses.</div><div class="check-es">Al usar la amoladora para cortar metal, la Careta Completa es OBLIGATORIA ademas de los lentes.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Inspect your PPE — scratched or damaged glasses do NOT protect you properly.</div><div class="check-es">Inspeccione su EPP: lentes rayados o danados NO lo protegen correctamente.</div></div></li>
+      </ul>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">Additional Notes / Notas Adicionales</label>
+        <textarea class="field-input" rows="2" placeholder="Any observations on this topic... / Observaciones sobre este tema..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. LADDERS ─────────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div class="section-titles">
+        <div class="section-title-en">Ladders — Safe Setup & Use</div>
+        <div class="section-title-es">Escaleras — Instalacion y Uso Seguro</div>
+      </div>
+      <div class="section-icon">🪜</div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div class="alert-content">
+          <div class="alert-en">Inspections found unsecured ladders this week. Most ladder accidents happen during "quick" climbs.</div>
+          <div class="alert-es">Las inspecciones encontraron escaleras sin asegurar. La mayoria de accidentes ocurren en subidas "rapidas".</div>
+        </div>
+      </div>
+      <ul class="checklist">
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Ladder must be on a firm, level, stable surface before climbing.</div><div class="check-es">La escalera debe estar en una superficie firme, plana y estable antes de subir.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Secure the ladder — it must not move or slip during use.</div><div class="check-es">Asegure la escalera: no debe moverse ni resbalar durante el uso.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Verify the ladder is at the correct angle (4:1 rule — 1 ft out for every 4 ft of height).</div><div class="check-es">Verifique el angulo correcto (regla 4:1: 1 pie hacia afuera por cada 4 pies de altura).</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Never climb if the ladder feels unstable — fix it first.</div><div class="check-es">Nunca suba si la escalera se siente inestable: arreglela primero.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Maintain 3 points of contact at all times while climbing.</div><div class="check-es">Mantenga 3 puntos de contacto en todo momento al subir.</div></div></li>
+      </ul>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">Additional Notes / Notas Adicionales</label>
+        <textarea class="field-input" rows="2" placeholder="Any observations on this topic... / Observaciones sobre este tema..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. HARNESS ─────────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <div class="section-titles">
+        <div class="section-title-en">Harness & Fall Protection</div>
+        <div class="section-title-es">Arnes y Proteccion Contra Caidas</div>
+      </div>
+      <div class="section-icon">🦺</div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⛔</span>
+        <div class="alert-content">
+          <div class="alert-en">SITE RULE: You MUST be tied off at 6 feet or higher. No exceptions.</div>
+          <div class="alert-es">REGLA DEL SITIO: DEBE amarrarse a 6 pies o mas. Sin excepciones.</div>
+        </div>
+      </div>
+      <ul class="checklist">
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Always have your harness available and on before ascending.</div><div class="check-es">Siempre tenga su arnes disponible y puesto antes de subir.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Tie off at 6 feet or higher — no shortcuts.</div><div class="check-es">Amarrese a 6 pies o mas: sin atajos.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Verify your anchor point is structurally appropriate and can support your weight.</div><div class="check-es">Verifique que el punto de anclaje sea apropiado y pueda soportar su peso.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Inspect harness and lanyard before each use — look for fraying or worn hardware.</div><div class="check-es">Inspeccione el arnes y la cuerda antes de cada uso: busque danos o desgaste.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">If you see a coworker without a harness at height — speak up. It may save their life.</div><div class="check-es">Si ve a un companero sin arnes en altura, digalo. Puede salvarle la vida.</div></div></li>
+      </ul>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">Additional Notes / Notas Adicionales</label>
+        <textarea class="field-input" rows="2" placeholder="Any observations on this topic... / Observaciones sobre este tema..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. NAILS ───────────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <div class="section-titles">
+        <div class="section-title-en">Nails — Site Housekeeping</div>
+        <div class="section-title-es">Clavos — Orden del Sitio</div>
+      </div>
+      <div class="section-icon">🔨</div>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Do not overfill your nail pouch — nails fall out and create hazards.</div><div class="check-es">No llene demasiado su bolsa de clavos: se caen y crean peligros.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Ensure nails are properly secured before moving around the site.</div><div class="check-es">Asegurese de que los clavos esten bien sujetos antes de moverse por el sitio.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">If you see nails on the ground — pick them up. It takes 5 seconds and prevents flat tires and injuries.</div><div class="check-es">Si ve clavos en el suelo, recojalos. Toma 5 segundos y previene pinchazos y lesiones.</div></div></li>
+      </ul>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">Additional Notes / Notas Adicionales</label>
+        <textarea class="field-input" rows="2" placeholder="Any observations on this topic... / Observaciones sobre este tema..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. C-CAN & TOOLS ───────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <div class="section-titles">
+        <div class="section-title-en">C-Can & Tool / Battery Management</div>
+        <div class="section-title-es">C-Can y Manejo de Herramientas / Baterias</div>
+      </div>
+      <div class="section-icon">🔧</div>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">All tools must be stored inside the C-Can at end of every workday.</div><div class="check-es">Todas las herramientas deben guardarse dentro del C-Can al final de cada dia.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Keep the C-Can clean and organized. Do NOT leave personal belongings inside.</div><div class="check-es">Mantenga el C-Can limpio y organizado. NO deje pertenencias personales dentro.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Always close and lock the C-Can when you leave.</div><div class="check-es">Siempre cierre y asegure el C-Can al irse.</div></div></li>
+        <li class="checklist-item" onclick="toggleCheck(this)"><label class="check-box"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></label><input type="checkbox"><div class="check-text"><div class="check-en">Return batteries to the charging station after use — do NOT leave them on scaffolding or the ground.</div><div class="check-es">Devuelva las baterias a la estacion de carga: NO las deje en andamios ni en el suelo.</div></div></li>
+      </ul>
+      <hr class="divider">
+      <div class="field-group">
+        <label class="field-label">Incidents / Near Misses to Report? / Incidentes o Casi-Accidentes a Reportar?</label>
+        <textarea class="field-input" rows="2" placeholder="Describe any incidents or near misses... / Describa cualquier incidente o casi-accidente..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ATTENDANCE ─────────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number" style="font-size:24px">✅</div>
+      <div class="section-titles">
+        <div class="section-title-en">Attendance Sheet</div>
+        <div class="section-title-es">Lista de Asistencia</div>
+      </div>
+      <div class="section-icon">👷</div>
+    </div>
+    <div class="section-body">
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ️</span>
+        <div class="alert-content">
+          <div class="alert-en">All workers present must be listed. Each person confirms they attended and understood the safety topics discussed today.</div>
+          <div class="alert-es">Todos los trabajadores presentes deben estar en la lista. Cada persona confirma que asistio y entendio los temas de seguridad.</div>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="attendance-table">
+          <thead>
+            <tr>
+              <th style="width:36px">#</th>
+              <th>Full Name / Nombre Completo</th>
+              <th>Trade / Oficio</th>
+              <th>Company / Empresa</th>
+              <th style="width:40px"></th>
+            </tr>
+          </thead>
+          <tbody id="attendanceBody"></tbody>
+        </table>
+      </div>
+      <button class="btn-add-row" onclick="addAttendeeRow()">+ Add Worker / Agregar Trabajador</button>
+    </div>
+  </div>
+
+  <!-- ── SIGN OFF ───────────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number" style="font-size:24px">✍️</div>
+      <div class="section-titles">
+        <div class="section-title-en">Authorized Sign Off</div>
+        <div class="section-title-es">Firmas Autorizadas</div>
+      </div>
+      <div class="section-icon">📝</div>
+    </div>
+    <div class="section-body">
+      <div class="signoff-grid">
+        <div class="signoff-field">
+          <div class="field-group">
+            <label class="field-label">CSO Name / Nombre CSO</label>
+            <input type="text" class="field-input" id="csoSign" placeholder="Jacqueline D.">
+          </div>
+          <div class="signoff-name">CSO Signature</div>
+          <div class="signoff-role">Chief Safety Officer</div>
+        </div>
+        <div class="signoff-field">
+          <div class="field-group">
+            <label class="field-label">Supervisor Name / Nombre</label>
+            <input type="text" class="field-input" id="supSign" placeholder="Kener Guillen / Oleksii Prokopov">
+          </div>
+          <div class="signoff-name">Supervisor Signature</div>
+          <div class="signoff-role">Site Supervisor</div>
+        </div>
+        <div class="signoff-field">
+          <div class="field-group">
+            <label class="field-label">Superintendent Name / Nombre</label>
+            <input type="text" class="field-input" id="supIntSign" placeholder="Dan Norman">
+          </div>
+          <div class="signoff-name">Superintendent Signature</div>
+          <div class="signoff-role">Project Superintendent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DECLARATION ────────────────────────────────────── -->
+  <div class="declaration">
+    <h3>DECLARATION / DECLARACION</h3>
+    <p>I confirm that this safety meeting was conducted, all topics were discussed, all workers in attendance were informed of the hazards relevant to today's work, and that the information recorded herein is accurate.</p>
+    <p class="es">Confirmo que esta reunion de seguridad se realizo, todos los temas fueron discutidos, todos los trabajadores presentes fueron informados sobre los peligros relevantes al trabajo de hoy, y que la informacion aqui registrada es exacta.</p>
+    <div class="declaration-check" onclick="toggleDeclaration(this)">
+      <div class="decl-checkbox"><svg width="12" height="10" viewBox="0 0 12 10"><polyline points="1,5 4,9 11,1" stroke="#0d3d1f" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="decl-text">I confirm the above declaration is true and accurate.
+        <span>Confirmo que la declaracion anterior es verdadera y exacta.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VALIDATION MSG ─────────────────────────────────── -->
+  <div class="validation-msg" id="validationMsg"></div>
+
+  <!-- ── SUBMIT ─────────────────────────────────────────── -->
+  <div class="submit-area">
+    <button class="btn-submit" onclick="submitForm()">
+      <span class="btn-icon">🛡️</span>
+      <span>Submit Safety Meeting / Enviar Reunion</span>
+    </button>
+    <div class="submit-note">This form will generate a printable PDF record. / Este formulario generara un registro PDF imprimible.</div>
+  </div>
+
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="container" id="successScreen" style="display:none;">
+  <div class="success-screen" style="display:block">
+    <div class="success-icon">✅</div>
+    <h2>MEETING SUBMITTED</h2>
+    <p style="font-weight:700; color: var(--green-dark); font-size:17px;">Reunion Enviada Exitosamente</p>
+    <p>The weekly safety meeting record has been saved. All workers listed have been registered as attending.</p>
+    <p style="font-style:italic; color:var(--muted)">El registro de la reunion semanal de seguridad ha sido guardado.</p>
+    <div style="margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn-print" onclick="window.print()">🖨️ Print / Imprimir</button>
+      <button class="btn-new" onclick="startNew()">+ New Meeting / Nueva Reunion</button>
+    </div>
+    <div id="summaryBox" style="margin-top:32px; text-align:left; background:var(--green-pale); border-radius:var(--radius); padding:24px; border:1px solid var(--border);"></div>
+  </div>
+</div>
+
+<script>
+  // ── Init ──────────────────────────────────────────────────
+  let declarationChecked = false;
+  const TRADES = ['Carpenter / Carpintero','Concrete Former / Formero','Laborer / Obrero','Electrician / Electricista','Plumber / Plomero','Iron Worker / Ferrallero','Operator / Operador','Foreman / Capataz','Other / Otro'];
+
+  function init() {
+    // Set today's date
+    const today = new Date();
+    document.getElementById('meetingDate').value = today.toISOString().split('T')[0];
+
+    // Pre-populate week
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - today.getDay() + 1);
+    const friday = new Date(monday); friday.setDate(monday.getDate() + 4);
+    const fmt = d => `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`;
+    document.getElementById('meetingWeek').value = `${fmt(monday)} – ${fmt(friday)}`;
+
+    // Add 3 starter rows
+    for(let i=0; i<3; i++) addAttendeeRow();
+
+    // Progress tracking
+    updateProgress();
+    document.querySelectorAll('input, textarea, select').forEach(el => el.addEventListener('input', updateProgress));
+  }
+
+  // ── Checklist ─────────────────────────────────────────────
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    const cb = el.querySelector('input[type=checkbox]');
+    if(cb) cb.checked = !cb.checked;
+    updateProgress();
+  }
+
+  function toggleDeclaration(el) {
+    el.classList.toggle('checked');
+    declarationChecked = el.classList.contains('checked');
+    updateProgress();
+  }
+
+  // ── Attendance ────────────────────────────────────────────
+  let rowCount = 0;
+  function addAttendeeRow(name='', trade='', company='') {
+    rowCount++;
+    const tbody = document.getElementById('attendanceBody');
+    const tr = document.createElement('tr');
+    tr.className = 'att-row';
+    tr.dataset.id = rowCount;
+
+    const tradeOptions = TRADES.map(t => `<option value="${t}"${t===trade?' selected':''}>${t}</option>`).join('');
+
+    tr.innerHTML = `
+      <td class="att-row-num">${rowCount}</td>
+      <td><input type="text" class="field-input" placeholder="Full Name / Nombre..." value="${name}" oninput="updateProgress()"></td>
+      <td>
+        <select class="field-input" onchange="updateProgress()">
+          <option value="">Select... / Seleccione...</option>
+          ${tradeOptions}
+        </select>
+      </td>
+      <td><input type="text" class="field-input" placeholder="Company..." value="${company || 'Syber / Pura Vida'}" oninput="updateProgress()"></td>
+      <td><button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button></td>
+    `;
+    tbody.appendChild(tr);
+    updateProgress();
+  }
+
+  function removeRow(btn) {
+    const tr = btn.closest('tr');
+    tr.style.opacity = '0';
+    tr.style.transform = 'translateX(20px)';
+    tr.style.transition = 'all 0.2s';
+    setTimeout(() => { tr.remove(); updateProgress(); }, 200);
+  }
+
+  // ── Progress ──────────────────────────────────────────────
+  function updateProgress() {
+    const allChecks = document.querySelectorAll('.checklist-item');
+    const checked = document.querySelectorAll('.checklist-item.checked');
+    const filled = document.getElementById('meetingDate').value && document.getElementById('projectName').value && document.getElementById('supervisorName').value;
+    const rows = document.querySelectorAll('#attendanceBody tr');
+    const hasAttendees = rows.length > 0;
+
+    let pct = 0;
+    if(filled) pct = 25;
+    if(checked.length > 0) pct = 25 + Math.min(50, Math.round((checked.length / allChecks.length) * 50));
+    if(hasAttendees) pct = Math.max(pct, 50);
+    if(declarationChecked) pct = 100;
+
+    document.getElementById('progressFill').style.width = pct + '%';
+
+    ['ps1','ps2','ps3','ps4'].forEach((id,i) => {
+      const el = document.getElementById(id);
+      const threshold = [25,50,75,100][i];
+      el.className = 'progress-step' + (pct >= threshold ? ' done' : pct >= (threshold-25) ? ' active' : '');
+    });
+  }
+
+  // ── Google Sheets Web App URL ─────────────────────────────
+  // STEP: Paste your deployed Apps Script URL below after setup
+  const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+  // ── Submit ────────────────────────────────────────────────
+  function submitForm() {
+    const msg = document.getElementById('validationMsg');
+
+    if(!document.getElementById('meetingDate').value) {
+      showError('Please enter the meeting date. / Por favor ingrese la fecha de la reunion.'); return;
+    }
+    if(!document.getElementById('projectName').value) {
+      showError('Please enter the project name. / Por favor ingrese el nombre del proyecto.'); return;
+    }
+    if(!document.getElementById('supervisorName').value) {
+      showError('Please enter the supervisor name. / Por favor ingrese el nombre del supervisor.'); return;
+    }
+
+    const allChecks = document.querySelectorAll('.checklist-item');
+    const checked = document.querySelectorAll('.checklist-item.checked');
+    if(checked.length < allChecks.length) {
+      const remaining = allChecks.length - checked.length;
+      showError(`Please confirm all ${remaining} remaining safety item(s). / Por favor confirme los ${remaining} tema(s) restantes.`); return;
+    }
+
+    const rows = document.querySelectorAll('#attendanceBody tr');
+    const namedRows = Array.from(rows).filter(r => r.querySelector('input')?.value.trim());
+    if(namedRows.length === 0) {
+      showError('Please add at least one worker. / Por favor agregue al menos un trabajador.'); return;
+    }
+
+    if(!declarationChecked) {
+      showError('Please confirm the declaration. / Por favor confirme la declaracion.'); return;
+    }
+
+    msg.classList.remove('show');
+    sendToGoogleSheets(namedRows);
+  }
+
+  // ── Collect & Send Data ───────────────────────────────────
+  function sendToGoogleSheets(namedRows) {
+    const btn = document.querySelector('.btn-submit');
+    btn.innerHTML = '<span class="btn-icon">⏳</span><span>Saving... / Guardando...</span>';
+    btn.disabled = true;
+
+    // Gather all form data
+    const notes = document.querySelectorAll('textarea');
+    const payload = {
+      timestamp:      new Date().toISOString(),
+      meetingDate:    document.getElementById('meetingDate').value,
+      meetingWeek:    document.getElementById('meetingWeek').value,
+      projectName:    document.getElementById('projectName').value,
+      projectAddress: document.getElementById('projectAddress').value,
+      supervisor:     document.getElementById('supervisorName').value,
+      cso:            document.getElementById('csoName').value,
+      superintendent: document.getElementById('superintendentName').value,
+      weather:        document.getElementById('weather').value,
+      csoSigner:      document.getElementById('csoSign').value,
+      supSigner:      document.getElementById('supSign').value,
+      superIntSigner: document.getElementById('supIntSign').value,
+
+      // Safety topic notes
+      notesEyeProtection: notes[0]?.value || '',
+      notesLadders:       notes[1]?.value || '',
+      notesHarness:       notes[2]?.value || '',
+      notesNails:         notes[3]?.value || '',
+      notesCCan:          notes[4]?.value || '',
+
+      // Checklist confirmation (count checked vs total)
+      checklistTotal:   document.querySelectorAll('.checklist-item').length,
+      checklistChecked: document.querySelectorAll('.checklist-item.checked').length,
+
+      // Attendance: each worker as "Name | Trade | Company"
+      attendeeCount: namedRows.length,
+      attendees: namedRows.map(r => {
+        const cells = r.querySelectorAll('input, select');
+        return [
+          cells[0]?.value || '',
+          cells[1]?.value || '',
+          cells[2]?.value || ''
+        ].join(' | ');
+      }).join('\n'),
+
+      declarationConfirmed: declarationChecked ? 'YES' : 'NO'
+    };
+
+    // If no URL set yet, skip network and show success with local summary
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+      console.warn('Apps Script URL not set — showing local summary only.');
+      btn.innerHTML = '<span class="btn-icon">🛡️</span><span>Submit Safety Meeting / Enviar Reunion</span>';
+      btn.disabled = false;
+      showSuccess(namedRows, payload, false);
+      return;
+    }
+
+    // Send to Google Sheets via Apps Script (no-cors fetch)
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      btn.innerHTML = '<span class="btn-icon">🛡️</span><span>Submit Safety Meeting / Enviar Reunion</span>';
+      btn.disabled = false;
+      showSuccess(namedRows, payload, true);
+    })
+    .catch(err => {
+      console.error('Submission error:', err);
+      btn.innerHTML = '<span class="btn-icon">🛡️</span><span>Submit Safety Meeting / Enviar Reunion</span>';
+      btn.disabled = false;
+      showError('Network error. Check your connection and try again. / Error de red. Verifique su conexion.');
+    });
+  }
+
+  function showError(text) {
+    const msg = document.getElementById('validationMsg');
+    msg.textContent = text;
+    msg.classList.add('show');
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function showSuccess(attendeeRows, payload, savedToCloud) {
+    const attendeeNames = attendeeRows.map(r => r.querySelector('input').value).filter(Boolean);
+
+    const cloudBadge = savedToCloud
+      ? `<div style="display:inline-flex;align-items:center;gap:8px;background:#e8f5e9;border:1px solid #4caf50;border-radius:999px;padding:6px 16px;font-size:13px;font-weight:600;color:#1a5c2a;margin-bottom:20px">✅ Saved to Google Sheets / Guardado en Google Sheets</div>`
+      : `<div style="display:inline-flex;align-items:center;gap:8px;background:#fff3e0;border:1px solid #e65100;border-radius:999px;padding:6px 16px;font-size:13px;font-weight:600;color:#6d2d00;margin-bottom:20px">⚠️ Local preview only — set your Apps Script URL to save to cloud</div>`;
+
+    const summary = document.getElementById('summaryBox');
+    summary.innerHTML = `
+      ${cloudBadge}
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:16px;letter-spacing:0.05em;text-transform:uppercase">Meeting Summary / Resumen de Reunion</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Date</div><div style="font-weight:600">${payload.meetingDate}</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Project</div><div style="font-weight:600">${payload.projectName}</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Supervisor</div><div style="font-weight:600">${payload.supervisor}</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Safety Topics</div><div style="font-weight:600;color:var(--green-main)">${payload.checklistChecked}/${payload.checklistTotal} confirmed ✓</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Weather</div><div style="font-weight:600">${payload.weather || '—'}</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:3px">Declaration</div><div style="font-weight:600;color:var(--green-main)">${payload.declarationConfirmed}</div></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Workers Present / Trabajadores Presentes (${attendeeNames.length})</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">${attendeeNames.map(n=>`<span style="background:white;border:1px solid var(--border);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:500">${n}</span>`).join('')}</div>
+      </div>
+      ${payload.notesEyeProtection || payload.notesLadders || payload.notesHarness || payload.notesNails || payload.notesCCan ? `
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Field Notes / Notas de Campo</div>
+        ${payload.notesEyeProtection ? `<div style="font-size:12px;margin-bottom:4px"><strong>Eye Protection:</strong> ${payload.notesEyeProtection}</div>` : ''}
+        ${payload.notesLadders       ? `<div style="font-size:12px;margin-bottom:4px"><strong>Ladders:</strong> ${payload.notesLadders}</div>` : ''}
+        ${payload.notesHarness       ? `<div style="font-size:12px;margin-bottom:4px"><strong>Harness:</strong> ${payload.notesHarness}</div>` : ''}
+        ${payload.notesNails         ? `<div style="font-size:12px;margin-bottom:4px"><strong>Nails:</strong> ${payload.notesNails}</div>` : ''}
+        ${payload.notesCCan          ? `<div style="font-size:12px;margin-bottom:4px"><strong>C-Can/Incidents:</strong> ${payload.notesCCan}</div>` : ''}
+      </div>` : ''}
+    `;
+
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function startNew() {
+    document.getElementById('formContainer').style.display = 'block';
+    document.getElementById('successScreen').style.display = 'none';
+    document.getElementById('attendanceBody').innerHTML = '';
+    rowCount = 0;
+    document.querySelectorAll('.checklist-item.checked').forEach(el => el.classList.remove('checked'));
+    document.querySelectorAll('.declaration-check.checked').forEach(el => el.classList.remove('checked'));
+    declarationChecked = false;
+    document.getElementById('validationMsg').classList.remove('show');
+    for(let i=0; i<3; i++) addAttendeeRow();
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  init();
+</script>
+</body>
+</html>
